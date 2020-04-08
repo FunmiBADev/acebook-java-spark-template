@@ -81,7 +81,7 @@ public class Sql2oModel implements Model, UserModel {
     public boolean userLogin(String email, String password) {
         boolean existing_user = false;
         try (Connection conn = sql2o.beginTransaction()) {
-            List<User> users = conn.createQuery("SELECT password FROM user WHERE email = :email")
+            List<User> users = conn.createQuery("SELECT password FROM users WHERE email = :email")
                     .addParameter("email", email)
                     .executeAndFetch(User.class);
             password = "[User(id=null, first_name=null, last_name=null, email=null, password=\"+password+\")]";

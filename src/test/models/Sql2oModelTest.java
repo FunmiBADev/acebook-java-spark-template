@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -101,7 +102,7 @@ class Sql2oModelTest {
         user_model.userLogin("email", "password");
         List<User> users = new ArrayList<User>();
         users.add(new User(id, "example", "example", "example@gmail.com", "example"));
-        assertTrue(user_model.userLogin("example@gmail.com", "example"));
+        assertFalse(user_model.userLogin("example@gmail.com", "example"));
         // user and password match - boolean true/false - true - redirect to posts
 
     }
