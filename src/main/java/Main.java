@@ -36,7 +36,11 @@ public class Main {
         UserModel user_model = new Sql2oModel(sql2o);
 
 
-        get("/", (req, res) -> "Hello World");
+        get("/", (req, res) -> {
+            HashMap homepage = new HashMap();
+
+            return new ModelAndView(homepage, "templates/homepage.vtl");
+        }, new VelocityTemplateEngine());
 
 
         get("/posts", (req, res) -> {
