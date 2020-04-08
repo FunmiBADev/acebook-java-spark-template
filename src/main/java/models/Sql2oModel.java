@@ -67,7 +67,7 @@ public class Sql2oModel implements Model, UserModel {
         try (Connection conn = sql2o.beginTransaction()) {
             userUuid = UUID.randomUUID();
 
-            conn.createQuery("insert into users(user_id, first_name, last_name, email, password) VALUES (:user_id, :first_name, :last_name, :email, :password)")
+            conn.createQuery("insert into users(user_id,  email, password) VALUES (:user_id, :email, :password)")
                     .addParameter("user_id", userUuid)
                     .addParameter("email", email)
                     .addParameter("password", password)

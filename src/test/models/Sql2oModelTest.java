@@ -1,7 +1,6 @@
 package models;
 
 import org.apache.log4j.BasicConfigurator;
-import org.eclipse.jetty.server.Authentication;
 import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
