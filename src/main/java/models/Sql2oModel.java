@@ -45,19 +45,20 @@ public class Sql2oModel implements Model, UserModel {
 
     @Override
     public UUID userSignup(String first_name, String last_name, String email, String password) {
+        UUID userUuid;
         try (Connection conn = sql2o.beginTransaction()) {
-            UUID userUuid = UUID.randomUUID();
+            userUuid = UUID.randomUUID();
 
             conn.createQuery("insert into users(user_id, first_name, last_name, email, password) VALUES (:user_id, :first_name, :last_name, :email, :password)")
                     .addParameter("user_id", userUuid)
-                    .addParameter("first_name", "example first_name")
-                    .addParameter("last_name", "example last_name")
-                    .addParameter("email", "example@gmail.com")
-                    .addParameter("password", "example" )
+                    .addParameter("first_name", first_name)
+                    .addParameter("last_name", last_name)
+                    .addParameter("email", email)
+                    .addParameter("password", password)
                     .executeUpdate();
             conn.commit();
-            return userUuid;
         }
+        return userUuid;
     }
 
 //    @Override

@@ -1,5 +1,6 @@
 import models.Model;
 import models.Sql2oModel;
+import models.UserModel;
 import org.flywaydb.core.Flyway;
 import org.sql2o.Sql2o;
 import org.sql2o.converters.UUIDConverter;
@@ -32,6 +33,7 @@ public class Main {
         });
 
         Model model = new Sql2oModel(sql2o);
+        UserModel user_model = new Sql2oModel(sql2o);
 
 
         get("/", (req, res) -> "Hello World");
@@ -70,6 +72,16 @@ if(model.getAllPosts().size() == 0) {
 
             return new ModelAndView(userlogin, "templates/userlogin.vtl");
         }, new VelocityTemplateEngine());
+
+        post("/usersignup", (req, res) -> {
+            String first_name = req.queryParams("first_name");
+            String last_name = req.queryParams("last_name");
+            String email = req.queryParams("email");
+            String password = req.queryParams("password");
+            user_model.userSignup(first_name, last_name , email, password);
+            res.redirect("/posts");
+            return null;
+        });
     }
     }
 
