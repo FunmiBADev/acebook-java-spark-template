@@ -1,6 +1,7 @@
 package models;
 
 import org.apache.log4j.BasicConfigurator;
+import org.eclipse.jetty.server.Authentication;
 import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Sql2oModelTest {
 
@@ -93,14 +95,23 @@ class Sql2oModelTest {
         conn.commit();
 
     }
-//    @Test
-//    void verifyUser() {
-//        UserModel user_model = (UserModel) new Sql2oModel(sql2o);
-//        user_model.userSignup("first_name", "last_name", "email", "password");
-//        List<Authentication.User> users = new ArrayList<Authentication.User>();
-//        Connection conn = sql2o.beginTransaction();
-//
-//    }
+    @Test
+    void userLogin() {
+        UserModel user_model = (UserModel) new Sql2oModel(sql2o);
+        user_model.userLogin("email", "password");
+        List<User> users = new ArrayList<User>();
+        users.add(new User(id, "example", "example", "example@gmail.com", "example"));
+        assertTrue(user_model.userLogin("example@gmail.com", "example"));
+        // user and password match - boolean true/false - true - redirect to posts
+
+    }
+
+
+//    Model model = new Sql2oModel(sql2o);
+//    List<Post> items = new ArrayList<Post>();
+//        items.add(new Post(id, "example title", "example content",ts));
+//    assertEquals(model.getAllPosts(), items);
+
 
 //    @Test
 //    void likePosts() {

@@ -61,21 +61,36 @@ public class Sql2oModel implements Model, UserModel {
         return userUuid;
     }
 
-    @Override
-    public UUID userlogin(String email, String password) {
-        UUID userUuid;
-        try (Connection conn = sql2o.beginTransaction()) {
-            userUuid = UUID.randomUUID();
+//    @Override
+//    public UUID userLogin(String email, String password) {
+//        UUID userUuid;
+//        try (Connection conn = sql2o.beginTransaction()) {
+//            userUuid = UUID.randomUUID();
+//
+//            conn.createQuery("SELECT users(user_id,  email, password) VALUES (:user_id, :email, :password)")
+//                    .addParameter("user_id", userUuid)
+//                    .addParameter("email", email)
+//                    .addParameter("password", password)
+//                    .executeUpdate();
+//            conn.commit();
+//        }
+//        return userUuid;
+//    }
 
-            conn.createQuery("insert into users(user_id,  email, password) VALUES (:user_id, :email, :password)")
-                    .addParameter("user_id", userUuid)
+    @Override
+    public boolean userLogin(String email, String password) {
+        boolean existing_user = false;
+        try (Connection conn = sql2o.beginTransaction()) {
+            List<User> users = conn.createQuery("SELECT password FROM user WHERE email = :email")
                     .addParameter("email", email)
-                    .addParameter("password", password)
-                    .executeUpdate();
-            conn.commit();
+                    .executeAndFetch(User.class);
+            password = "[User(id=null, first_name=null, last_name=null, email=null, password=\"+password+\")]";
+            if(users.toString().equals(password)){
+                existing_user = true;
+            };
         }
-        return userUuid;
-    }
+        return existing_user;
+        }
 
 //    @Override
 //    public void likePosts(UUID id) {
