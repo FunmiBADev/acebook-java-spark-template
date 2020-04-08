@@ -61,6 +61,22 @@ public class Sql2oModel implements Model, UserModel {
         return userUuid;
     }
 
+    @Override
+    public UUID userlogin(String email, String password) {
+        UUID userUuid;
+        try (Connection conn = sql2o.beginTransaction()) {
+            userUuid = UUID.randomUUID();
+
+            conn.createQuery("insert into users(user_id, first_name, last_name, email, password) VALUES (:user_id, :first_name, :last_name, :email, :password)")
+                    .addParameter("user_id", userUuid)
+                    .addParameter("email", email)
+                    .addParameter("password", password)
+                    .executeUpdate();
+            conn.commit();
+        }
+        return userUuid;
+    }
+
 //    @Override
 //    public void likePosts(UUID id) {
 //

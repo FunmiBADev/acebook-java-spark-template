@@ -82,6 +82,14 @@ if(model.getAllPosts().size() == 0) {
             res.redirect("/posts");
             return null;
         });
+
+        post("/userlogin", (req, res) -> {
+            String email = req.queryParams("email");
+            String password = req.queryParams("password");
+            user_model.userlogin( email, password);
+            res.redirect("/posts");
+            return null;
+        });
     }
     }
 
