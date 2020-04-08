@@ -70,13 +70,6 @@ if(model.getAllPosts().size() == 0) {
             return new ModelAndView(usersignup, "templates/usersignup.vtl");
         }, new VelocityTemplateEngine());
 
-        get("/userlogin", (req, res) -> {
-
-            HashMap userlogin = new HashMap();
-
-            return new ModelAndView(userlogin, "templates/userlogin.vtl");
-        }, new VelocityTemplateEngine());
-
         post("/usersignup", (req, res) -> {
             String first_name = req.queryParams("first_name");
             String last_name = req.queryParams("last_name");
@@ -87,12 +80,20 @@ if(model.getAllPosts().size() == 0) {
             return null;
         });
 
+        get("/userlogin", (req, res) -> {
+
+            HashMap userlogin = new HashMap();
+
+            return new ModelAndView(userlogin, "templates/userlogin.vtl");
+        }, new VelocityTemplateEngine());
+
+
         post("/userlogin", (req, res) -> {
             String email = req.queryParams("email");
             String password = req.queryParams("password");
             user_model.userLogin( email, password);
             res.redirect("/posts");
-            return true;
+            return null;
         });
     }
     }

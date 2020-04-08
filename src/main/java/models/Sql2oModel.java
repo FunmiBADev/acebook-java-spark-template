@@ -81,7 +81,7 @@ public class Sql2oModel implements Model, UserModel {
     public boolean userLogin(String email, String password) {
         boolean existing_user = false;
         try (Connection conn = sql2o.beginTransaction()) {
-            List<User> users = conn.createQuery("SELECT password FROM user WHERE email = :email")
+            List<User> users = conn.createQuery("SELECT password FROM users WHERE email = :email")
                     .addParameter("email", email)
                     .executeAndFetch(User.class);
             password = "[User(id=null, first_name=null, last_name=null, email=null, password=\"+password+\")]";
@@ -91,6 +91,22 @@ public class Sql2oModel implements Model, UserModel {
         }
         return existing_user;
         }
+
+//    String SQL = "SELECT * FROM users WHERE users_name='" + name + "' && users_password='" + password+ "'";
+//
+//    ResultSet rs = stmt.executeQuery(SQL);
+//
+//    // Check Username and Password
+//    while (rs.next()) {
+//        databaseUsername = rs.getString("users_name");
+//        databasePassword = rs.getString("users_password");
+//    }
+//
+//    if (name.equals(databaseUsername) && password.equals(databasePassword)) {
+//        System.out.println("Successful Login!\n----");
+//    } else {
+//        System.out.println("Incorrect Password\n----");
+//    }
 
 //    @Override
 //    public void likePosts(UUID id) {
