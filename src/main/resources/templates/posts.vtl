@@ -2,10 +2,14 @@
        <html>
          <head>
            <title>Acebook!</title>
-           <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css'>
+           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
          </head>
          <body>
-           <h1>Welcome to acebook</h1>
+         <div class="container custom-container">
+             <div class="col">
+               <h1 class="text-center">Welcome to acebook!</h1>
+             </div>
 
            <div>
                <form action="/posts/new" method ="POST">
@@ -17,12 +21,30 @@
                 <input type="submit" value="Post!">
                </form>
                </div>
+<br>
+<br>
+           <div class="col">
+                 <table class="table">
 
-           <ul>
+                   <thead class="thead-dark">
+                     <tr>
+                       <th scope="col">Title</th>
+                       <th scope="col">Content</th>
+                       <th scope="col">Posted on</th>
+                   </tr>
+                   </thead>
+
+       <tbody>
            #foreach ( $t in $posts )
-          <li> $t.title $t.content $t.post_date </li>
+          <tr>
+          <td> $t.title </td>
+          <td> $t.content </td>
+          <td> $t.post_date</td>
        #end
+       </tbody>
+       </table>
+       </div>
 
-           </ul>
+
          </body>
        </html>

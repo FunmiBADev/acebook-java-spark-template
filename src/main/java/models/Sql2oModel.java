@@ -35,7 +35,7 @@ public class Sql2oModel implements Model, UserModel {
     @Override
     public List<Post> getAllPosts() {
         try (Connection conn = sql2o.open()) {
-            List<Post> items = conn.createQuery("select * from posts ORDER BY post_date DESC")
+            List<Post> items = conn.createQuery("select * from posts ORDER BY post_date DESC LIMIT 10")
                     .executeAndFetch(Post.class);
 
             return items;
