@@ -1,6 +1,7 @@
 package models;
 
 import org.apache.log4j.BasicConfigurator;
+import org.eclipse.jetty.server.Authentication;
 import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -93,6 +94,14 @@ class Sql2oModelTest {
         conn.commit();
 
     }
+//    @Test
+//    void verifyUser() {
+//        UserModel user_model = (UserModel) new Sql2oModel(sql2o);
+//        user_model.userSignup("first_name", "last_name", "email", "password");
+//        List<Authentication.User> users = new ArrayList<Authentication.User>();
+//        Connection conn = sql2o.beginTransaction();
+//
+//    }
 
 //    @Test
 //    void likePosts() {
