@@ -22,6 +22,18 @@
          .request-container {
             width: 800px;
          }
+         .button {
+           border: white;
+           border: 4px;
+           background color: #49a09d;
+           color: white;
+           text-align: center;
+           text-decoration: none;
+           display: inline-block;
+           font-size: 16px;
+           margin: 4px 2px;
+           cursor: pointer;
+         }
          </style>
 
 
@@ -40,7 +52,7 @@
                  <textarea rows="1" cols="70" type="text"  name="title" placeholder ="title"></textarea><br>
                  <label>content:</label>
                 <textarea rows="7" cols="70" type="text" name="content" placeholder="what's on your mind?"></textarea><br>
-                <input type="submit" value="Post!">
+                <input type="submit" class="button" value="Post!">
                </form>
                </div>
 
@@ -63,7 +75,7 @@
           <td> $t.content </td>
           <td> $t.post_date</td>
           <td>
-          <button type="submit" class="btn btn-primary" name="like">like</button>
+          <button type="submit" class="button" name="like">like</button>
        #end
        </tbody>
        </table>
