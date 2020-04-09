@@ -1,7 +1,7 @@
 <!DOCTYPE html>
        <html>
          <head>
-           <title>Acebook!</title>
+           <title>acebook</title>
            <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css'
          </head>
 
@@ -11,6 +11,7 @@
              width: 50vw;
              height: 50vh;
              display: flex;
+             color: white;
 
          }
 
@@ -29,16 +30,16 @@
          <body>
          <div class="container custom-container">
              <div class="col">
-               <h1 class="text-center">Welcome to acebook!</h1>
+               <h1 class="text-center">welcome to acebook</h1>
              </div>
 
            <div>
                <form action="/posts/new" method ="POST">
 
-                 <label> Title:</label>
-                 <textarea rows="1" cols="70" type="text"  name="title" placeholder ="Title"></textarea><br>
-                 <label>Content:</label>
-                <textarea rows="7" cols="70" type="text" name="content" placeholder="Whats on your mind?"></textarea><br>
+                 <label> title:</label>
+                 <textarea rows="1" cols="70" type="text"  name="title" placeholder ="title"></textarea><br>
+                 <label>content:</label>
+                <textarea rows="7" cols="70" type="text" name="content" placeholder="what's on your mind?"></textarea><br>
                 <input type="submit" value="Post!">
                </form>
                </div>
@@ -48,10 +49,10 @@
 
                    <thead class="thead-dark">
                      <tr>
-                       <th scope="col">Title</th>
-                       <th scope="col">Content</th>
-                       <th scope="col">Posted on</th>
-                       <th scope="col">Like this post!</th>
+                       <th scope="col">title</th>
+                       <th scope="col">content</th>
+                       <th scope="col">posted on</th>
+                       <th scope="col">like this post!</th>
                    </tr>
                    </thead>
 
@@ -62,7 +63,7 @@
           <td> $t.content </td>
           <td> $t.post_date</td>
           <td>
-          <button type="submit" class="btn btn-primary" name="like">Like</button>
+          <button type="submit" class="btn btn-primary" name="like">like</button>
        #end
        </tbody>
        </table>
