@@ -3,12 +3,23 @@
          <head>
            <title>Acebook!</title>
            <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css'
-            <link rel="stylesheet" type="text/css" href="index.css">
          </head>
 
          <style >
          body {
          	background: linear-gradient(45deg, #49a09d, #5f2c82);
+             width: 50vw;
+             height: 50vh;
+             display: flex;
+
+         }
+
+         .custom-container {
+             width: 500px;
+         }
+
+         .request-container {
+            width: 800px;
          }
          </style>
 
@@ -24,14 +35,13 @@
            <div>
                <form action="/posts/new" method ="POST">
 
-                 <label> Title:</label><br>
-                 <input type="text"  name="title" placeholder ="Title"><br>
-                 <label>Content:</label><br>
-                <textarea type="text"  name="content" placeholder="Whats on your mind?"></textarea><br><br>
+                 <label> Title:</label>
+                 <textarea rows="1" cols="70" type="text"  name="title" placeholder ="Title"></textarea><br>
+                 <label>Content:</label>
+                <textarea rows="7" cols="70" type="text" name="content" placeholder="Whats on your mind?"></textarea><br>
                 <input type="submit" value="Post!">
                </form>
                </div>
-<br>
 
            <div class="col">
                  <table class="table">
@@ -41,6 +51,7 @@
                        <th scope="col">Title</th>
                        <th scope="col">Content</th>
                        <th scope="col">Posted on</th>
+                       <th scope="col">Like this post!</th>
                    </tr>
                    </thead>
 
@@ -50,6 +61,8 @@
           <td> $t.title </td>
           <td> $t.content </td>
           <td> $t.post_date</td>
+          <td>
+          <button type="submit" class="btn btn-primary" name="like">Like</button>
        #end
        </tbody>
        </table>
